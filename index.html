@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Registro</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link href="estilos.css" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+		<script src="funciones.js"></script>
+	</head>
+	
+	<body>
+		<h1>Registro</h1>
+		<input type="text" placeholder="Nombre de Usuario" id="usuario">
+		<input type="email" placeholder="Correo" id="email">
+		<input type="password" placeholder="contraseña" id="password">
+		<input type="password" placeholder="Confirmar contraseña" id="password2">
+		
+		<button>Registrarme</button>
+		
+		<div>
+			<p>o puedes Iniciar Sesión</p>
+		</div>
+	</body>
+	<script>
+        function login()
+        {
+            //CAPTIRA LOS DATOS QUE EL USUARIO ESCRIBIO
+            usuario = document.getElementById('usuario').value;
+            password = document.getElementById('password').value;
+            
+            //COMPARAR LOS VALORES ALMACENADOS
+            usuarioAlmacenado = localStorage.getItem('usuario');
+            passwordAlmacenado = localStorage.getItem('password');
+            
+            if(usuario == usuarioAlmacenado && password == passwordAlmacenado)
+            {
+                alert('El usuario si se pudo logear');
+            }
+            else
+            {
+                //alert('El usuario no existe');
+                document.getElementById('usuario').style.border="3px solid red";
+                document.getElementById('password').style.border="3px solid red";
+                mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity = "1";
+                mensaje.style.transtion = ".6 all";
+                mensaje.innerHTML = "ERROR: usuario no valido";
+                navigator.vibrate('100');
+                navigator.vibrate('200');
+            }
+        }
+    </script>
+</html>
